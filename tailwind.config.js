@@ -20,8 +20,7 @@ module.exports = {
       },
 
       fontFamily: {
-        cursive: ["Send Flowers"],
-        quicksand: ["Quicksand", "sans-serif"],
+        sans: ["Dosis", "Quicksand", "sans-serif"],
       },
     },
   },

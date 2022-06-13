@@ -1,91 +1,67 @@
-import socials from "@/assets/data/socials.json";
-import images from "@/assets/data/gallery.json";
-import list from "@/assets/data/list.json";
-import old_lists from "@/assets/data/old_lists.json";
-
 import { partition, loadImage } from "./tools";
-import supabase, { SupabaseSocials } from "./supabase";
+import supabase, { getPublicBucket } from "./supabase";
+
+const SUPABASE_BUCKET = "public";
 
 // === Exports ===
 
-export { getSocials, getImages, sendMessage, getList, getOldLists };
-export { Social, Dept, Member, List };
+export { getYournaux, getSocials };
+export { Yournal, Social };
 
 // === Methods ===
 
-// Gallery
-
-async function getImages(): Promise<string[]> {
-  return images.map((rel_path) =>
-    loadImage("../assets/images/gallery/" + rel_path)
-  );
-}
-
-// Socials
-
-async function getSocials(): Promise<Social[]> {
+async function getYournaux(): Promise<Yournal[]> {
   const { data, error } = await supabase
-    .from<SupabaseSocials>("Socials")
+    .from<YournalSupabase>("Yournaux")
     .select("*");
   if (error) return [];
 
-  const socials: Social[] = data.map((x) => ({
-    name: x.name,
-    icon: x.name.toLowerCase(),
-    url: x.url,
-  }));
+  const loadFile = (path: string) =>
+    supabase.storage.from(SUPABASE_BUCKET).getPublicUrl(path).publicURL ?? "";
 
-  return socials;
+  const downloadFile = async (path: string) => {
+    const { data, error } = await supabase.storage
+      .from(SUPABASE_BUCKET)
+      .download(path);
+
+    console.log(error);
+    return data;
+  };
+
+  const list: Yournal[] = await Promise.all(
+    data
+      .sort((a, b) => a.id - b.id)
+      .map(async (x) => ({
+        name: x.name,
+        cover: loadFile(x.cover),
+        download: await loadFile(x.download),
+      }))
+  );
+
+  return list;
 }
 
-interface Social {
+async function getSocials(): Promise<Social[]> {
+  const { data } = await supabase.from<Social>("Socials").select("*");
+  return data ?? [];
+}
+
+// === Types ===
+
+type Social = {
   name: string;
-  icon: string;
-  url: string;
-}
+  link: string;
+};
 
-// Contact
-
-function sendMessage(email: string, message: string) {
-  console.log(email, message);
-}
-
-// Get council list
-
-async function getOldLists(): Promise<List[]> {
-  return old_lists;
-}
-
-interface List {
-  icon: string;
-  dates: string;
-}
-
-async function getList(): Promise<Dept[]> {
-  const members: Member[] = list.map((m) => ({
-    name: m.Name,
-    dept: m.Pole,
-    img: loadImage(`../assets/images/faces/${m.Name}.png`),
-    leader: m.Responsable != "",
-  }));
-
-  const partitions = partition(members, (m) => m.dept);
-  const depts: Dept[] = partitions.keySet().map((dept) => ({
-    name: dept,
-    members: partitions.get(dept),
-  }));
-
-  return depts;
-}
-
-interface Dept {
+type YournalSupabase = {
+  id: number;
   name: string;
-  members: Member[];
-}
+  cover: string;
+  download: string;
+};
 
-interface Member {
+type Yournal = {
   name: string;
-  dept: string;
-  img: string;
-  leader: boolean;
-}
+  cover: string;
+  download: string;
+};
