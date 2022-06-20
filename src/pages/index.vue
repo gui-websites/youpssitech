@@ -1,46 +1,45 @@
 <template>
   <MainLayout>
-    <div class="grid grid-cols-2 gap-6">
-      <div class="left-col col">
-        <Card title="Bienvenue au BDE Youpssitech">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus
-            perferendis magni dolorem beatae officia quas aperiam rem nisi optio
-            exercitationem maxime dicta sunt nulla amet dolores, ex recusandae,
-            minima error.
-          </p>
-          <div class="flex items-center gap-3">
-            <a v-for="s in socials.getSocials()" :href="s.link" target="_blank">
-              <VueFeather :type="s.name.toLowerCase()" />
-            </a>
-          </div>
-        </Card>
+    <WallVue :width="500">
+      <Card title="Bienvenue au BDE Youpssitech">
+        <p>
+          Retrouvez y toutes les informations sur nos événements, ainsi que les
+          photos, les yournaux et pleins d'autres infos super cool sur l'école !
+          <br class="mb-2" />
+          N'hésite pas à nous suivre sur instagram pour avoir nos actualités en
+          DIRECT.
+        </p>
+        <div class="flex items-center gap-3">
+          <a v-for="s in socials.getSocials()" :href="s.link" target="_blank">
+            <VueFeather :type="s.name.toLowerCase()" />
+          </a>
+        </div>
+      </Card>
 
-        <Card title="Partenariat Xiaomi" cover="../assets/images/xiaomi.png">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit
-            quisquam officia beatae repellendus, libero nesciunt tempore ut
-            eaque, reiciendis aut eius provident veritatis amet, sunt facere?
-            Rem similique et accusamus.
-          </p>
-        </Card>
-      </div>
-      <div class="right-col col">
-        <Card :padding="false">
-          <img src="@/assets/images/photo.jpg" alt="" class="w-full" />
-        </Card>
+      <Card :padding="false">
+        <img src="@/assets/images/photo.jpg" alt="" class="w-full" />
+      </Card>
 
-        <Card title="Le Yournal">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero,
-          officiis esse! Facilis illum impedit reprehenderit iste dicta nihil
-          nostrum beatae maiores inventore, velit magni non possimus assumenda
-          eligendi minima illo.
-          <div>
-            <Button @click="goto('/yournal')">Voir les Yournaux</Button>
-          </div>
-        </Card>
-      </div>
-    </div>
+      <Card title="Partenariat Xiaomi">
+        <img src="@/assets/images/xiaomi.png" alt="" />
+        <p>
+          Nous avons fait équipe avec Xiaomi pour vous donner la chance de
+          remporter des lots à l'occasions de tirages aux sorts sur instagram.
+          Suivez-nous pour ne pas rater le suivant !
+        </p>
+      </Card>
+
+      <Card title="Le Yournal">
+        <p>
+          Venez découvrir la ligne éditoriale de l'école rédigée par les
+          étudiants. Elle vous tiendra aux courant des actus dans le monde ainsi
+          que des prochains évènements organisés par le BDE.
+        </p>
+        <div>
+          <Button @click="goto('/yournal')">Voir les Yournaux</Button>
+        </div>
+      </Card>
+    </WallVue>
   </MainLayout>
 </template>
 
@@ -51,6 +50,7 @@ import Button from "@/components/button.vue";
 
 import { useRouter } from "vue-router";
 import { useSocialsStore } from "@/stores";
+import WallVue from "@/components/wall.vue";
 
 const router = useRouter();
 function goto(route: string) {

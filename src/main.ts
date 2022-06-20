@@ -5,12 +5,10 @@ import router from "./router";
 import { createPinia } from "pinia";
 
 import VueFeather from "vue-feather";
-import { VueMasonryPlugin } from "vue-masonry";
 import "./assets/tailwind.css";
 
 const app = createApp(App);
 app.component(VueFeather.name, VueFeather);
-app.use(VueMasonryPlugin);
 app.use(router);
 app.use(createPinia());
 

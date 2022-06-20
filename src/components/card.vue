@@ -21,3 +21,9 @@ const props = withDefaults(
   }
 );
 </script>
+
+<style>
+.card p {
+  @apply text-justify;
+}
+</style>
