@@ -1,12 +1,15 @@
 <template>
-  <div class="col" v-show="false"></div>
-  <div class="wall w-full" ref="wall">
-    <slot />
+  <div class="col hidden"></div>
+  <div class="w-full">
+    <div class="hidden" ref="buffer">
+      <slot />
+    </div>
+    <div class="wall" ref="content"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeMount, onMounted, onUpdated } from "vue";
+import { ref, onBeforeUnmount, onMounted } from "vue";
 
 type Props = {
   order?: "horizontal" | "vertical";
@@ -14,22 +17,49 @@ type Props = {
 };
 const props = withDefaults(defineProps<Props>(), { order: "horizontal" });
 
-const wall = ref<HTMLElement>();
-const list = ref<any[]>();
+const buffer = ref<HTMLElement>();
+const content = ref<HTMLElement>();
 
-onMounted(() => {
-  list.value = Array.from(wall.value?.children ?? []);
+const list = ref<Node[]>([]);
+
+// Watch for change number of elements to display
+
+const observer = new MutationObserver((mutations: MutationRecord[]) => {
+  for (const mutation of mutations) {
+    if (mutation.type != "childList" || mutation.target != buffer.value)
+      continue;
+
+    const removeText = (list: NodeList) =>
+      Array.from(list).filter((x) => x.nodeName != "#text");
+
+    const add = removeText(mutation.addedNodes);
+    const rem = removeText(mutation.removedNodes);
+
+    list.value = list.value.concat(add).filter((x) => !rem.includes(x));
+  }
   createWall();
 });
-onUpdated(createWall);
+
+onMounted(() => {
+  if (buffer.value) {
+    observer.observe(buffer.value, { childList: true });
+    list.value = Array.from(buffer.value.children);
+  }
+  createWall();
+});
+
+onBeforeUnmount(() => observer.disconnect());
+
+// End
+
 window.addEventListener("resize", createWall);
 
 function createWall() {
-  if (!wall.value) return;
-  const numCols = Math.ceil((wall.value?.clientWidth ?? 0) / props.width);
+  if (!content.value || list.value.length == 0) return;
+  const numCols = Math.ceil((content.value?.clientWidth ?? 0) / props.width);
 
-  wall.value.innerHTML = "";
-  wall.value.style?.setProperty(
+  content.value.innerHTML = "";
+  content.value.style?.setProperty(
     "grid-template-columns",
     `repeat(${numCols}, minmax(0, 1fr))`
   );
@@ -43,7 +73,7 @@ function createWall() {
     col.classList.add("col");
     for (const item of items) col.appendChild(item);
 
-    wall.value.appendChild(col);
+    content.value.appendChild(col);
   }
 }
 </script>

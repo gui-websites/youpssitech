@@ -1,14 +1,27 @@
-import { partition, loadImage } from "./tools";
-import supabase, { getPublicBucket } from "./supabase";
+import { partition, loadImage, CustomMap } from "./tools";
+import supabase from "./supabase";
 
 const SUPABASE_BUCKET = "public";
 
 // === Exports ===
 
-export { getYournaux, getSocials };
-export { Yournal, Social };
+export { getYournaux, getSocials, getMembers };
+export { Yournal, Social, Member, MemberList };
 
 // === Methods ===
+
+async function getMembers(): Promise<MemberList> {
+  const { data, error } = await supabase.from<Member>("Members").select("*");
+  if (error) return new CustomMap();
+
+  const members: Member[] = data.map((m) => ({
+    ...m,
+    avatar: loadSupabaseFile(m.avatar),
+  }));
+
+  const depts = partition(members, (m) => m.dept);
+  return depts;
+}
 
 async function getYournaux(): Promise<Yournal[]> {
   const { data, error } = await supabase
@@ -16,25 +29,13 @@ async function getYournaux(): Promise<Yournal[]> {
     .select("*");
   if (error) return [];
 
-  const loadFile = (path: string) =>
-    supabase.storage.from(SUPABASE_BUCKET).getPublicUrl(path).publicURL ?? "";
-
-  const downloadFile = async (path: string) => {
-    const { data, error } = await supabase.storage
-      .from(SUPABASE_BUCKET)
-      .download(path);
-
-    console.log(error);
-    return data;
-  };
-
   const list: Yournal[] = await Promise.all(
     data
       .sort((a, b) => a.id - b.id)
       .map(async (x) => ({
         name: x.name,
-        cover: loadFile(x.cover),
-        download: await loadFile(x.download),
+        cover: loadSupabaseFile(x.cover),
+        download: loadSupabaseFile(x.download),
       }))
   );
 
@@ -44,6 +45,12 @@ async function getYournaux(): Promise<Yournal[]> {
 async function getSocials(): Promise<Social[]> {
   const { data } = await supabase.from<Social>("Socials").select("*");
   return data ?? [];
+}
+
+function loadSupabaseFile(path: string) {
+  return (
+    supabase.storage.from(SUPABASE_BUCKET).getPublicUrl(path).publicURL ?? ""
+  );
 }
 
 // === Types ===
@@ -64,4 +71,13 @@ type Yournal = {
   name: string;
   cover: string;
   download: string;
+};
+
+type MemberList = CustomMap<string, Member[]>;
+
+type Member = {
+  name: string;
+  avatar: string;
+  dept: string;
+  leader: boolean;
 };

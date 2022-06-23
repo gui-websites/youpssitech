@@ -10,7 +10,7 @@
           DIRECT.
         </p>
         <div class="flex items-center gap-3">
-          <a v-for="s in socials.getSocials()" :href="s.link" target="_blank">
+          <a v-for="s in socials.get()" :href="s.link" target="_blank">
             <VueFeather :type="s.name.toLowerCase()" />
           </a>
         </div>
@@ -49,15 +49,13 @@ import Card from "@/components/card.vue";
 import Button from "@/components/button.vue";
 
 import { useRouter } from "vue-router";
-import { useSocialsStore } from "@/stores";
+import { socials } from "@/stores";
 import WallVue from "@/components/wall.vue";
 
 const router = useRouter();
 function goto(route: string) {
   router.push(route);
 }
-
-const socials = useSocialsStore();
 </script>
 
 <style scoped>

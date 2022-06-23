@@ -14,7 +14,7 @@
       D'ailleurs si ça t'intéresse, n'hésites pas à nous contacter en mp sur le
       compte Instagram du BDE,
       <a
-        :href="socials.getLink('instagram')"
+        :href="getLink('instagram')"
         target="_blank"
         class="font-bold text-orange-400"
         >@youpssitech</a
@@ -24,7 +24,7 @@
 
     <h2 class="mt-6">Parutions 2022</h2>
     <div class="flex items-center gap-6">
-      <Card v-for="y in yournaux.getYournaux()" :padding="false">
+      <Card v-for="y in yournaux.get()" :padding="false">
         <img :src="y.cover" alt="" class="w-64" />
         <div
           class="absolute bottom-0 flex w-full items-center justify-between border-2 border-white bg-black p-3 text-white"
@@ -42,10 +42,14 @@
 <script setup lang="ts">
 import MainLayout from "@/layouts/main-layout.vue";
 import Card from "@/components/card.vue";
-import { useYournalStore, useSocialsStore } from "@/stores";
+import { socials, yournaux } from "@/stores";
 
-const yournaux = useYournalStore();
-const socials = useSocialsStore();
+function getLink(name: string) {
+  const matches = socials
+    .get()
+    .filter((s) => s.name.toLowerCase() == name.toLowerCase());
+  return matches.length != 0 ? matches[0].link : "";
+}
 </script>
 
 <style scoped>
