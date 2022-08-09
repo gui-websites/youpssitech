@@ -1,10 +1,10 @@
 <template>
-  <div class="col hidden"></div>
   <div class="w-full">
+    <div class="col hidden"></div>
     <div class="hidden" ref="buffer">
       <slot />
     </div>
-    <div class="wall" ref="content"></div>
+    <div class="wall w-full" ref="content"></div>
   </div>
 </template>
 
@@ -52,11 +52,16 @@ onBeforeUnmount(() => observer.disconnect());
 
 // End
 
-window.addEventListener("resize", createWall);
+window.addEventListener("resize", () => {
+  console.log("ping");
+  createWall();
+});
 
 function createWall() {
+  console.log(content.value, list.value.length);
   if (!content.value || list.value.length == 0) return;
   const numCols = Math.ceil((content.value?.clientWidth ?? 0) / props.width);
+  console.log(numCols);
 
   content.value.innerHTML = "";
   content.value.style?.setProperty(

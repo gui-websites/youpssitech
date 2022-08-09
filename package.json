@@ -16,7 +16,6 @@
     "url": "^0.11.0",
     "vue": "^3.2.25",
     "vue-feather": "^2.0.0",
-    "vue-masonry": "^0.15.0",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {

@@ -40,6 +40,12 @@
         </div>
       </Card>
     </WallVue>
+
+    <!-- <hr>
+
+    <div>
+      <h1>Nos</h1>
+    </div> -->
   </MainLayout>
 </template>
 

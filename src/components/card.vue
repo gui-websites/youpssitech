@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-white" :class="{ 'p-6': padding }">
-    <img v-if="cover" :src="loadImage(cover)" alt="" />
-    <h1 v-if="title" class="mb-3 text-xl font-bold">
+    <img v-if="cover" :src="loadImage(cover)" alt="" class="mb-3" />
+    <h1 v-if="title" class="mb-3">
       {{ title }}
     </h1>
     <div class="relative flex flex-col gap-3">
@@ -25,5 +25,9 @@ const props = withDefaults(
 <style>
 .card p {
   @apply text-justify;
+}
+
+.card h1 {
+  @apply text-xl font-bold;
 }
 </style>
