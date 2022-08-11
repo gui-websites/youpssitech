@@ -39,13 +39,11 @@
           <Button @click="goto('/yournal')">Voir les Yournaux</Button>
         </div>
       </Card>
+
+      <!-- <Card title="Liens utiles">
+        <p></p>
+      </Card> -->
     </WallVue>
-
-    <!-- <hr>
-
-    <div>
-      <h1>Nos</h1>
-    </div> -->
   </MainLayout>
 </template>
 

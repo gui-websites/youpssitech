@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 function getThemeColor(var_name) {
   return `var(--${var_name})`;
 }
@@ -8,15 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: getThemeColor("primary"),
-          dark: getThemeColor("primary-dark"),
-        },
-
-        grey: {
-          DEFAULT: getThemeColor("gray"),
-          light: getThemeColor("gray-light"),
-        },
+        primary: colors.orange[500],
       },
 
       fontFamily: {

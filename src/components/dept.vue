@@ -2,7 +2,11 @@
   <Card>
     <div class="flex items-center justify-between gap-3">
       <h1>{{ dept.name }}</h1>
-      <VueFeather :type="icon" @click="showDetails = !showDetails" />
+      <VueFeather
+        :type="icon"
+        @click="showDetails = !showDetails"
+        class="cursor-pointer"
+      />
     </div>
     <p>{{ dept.desc }}</p>
     <div

@@ -10,12 +10,6 @@
 @layer base {
   :root {
     --white: #f3f7f6;
-
-    --primary: #e7aa37;
-    --primary-dark: #281815;
-
-    --gray: #464445;
-    --gray-light: #949494;
   }
 
   html,

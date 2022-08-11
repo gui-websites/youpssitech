@@ -16,7 +16,7 @@
       <a
         :href="getLink('instagram')"
         target="_blank"
-        class="font-bold text-orange-400"
+        class="font-bold text-primary"
         >@youpssitech</a
       >
       !!
@@ -42,14 +42,7 @@
 <script setup lang="ts">
 import MainLayout from "@/layouts/main-layout.vue";
 import Card from "@/components/card.vue";
-import { socials, yournaux } from "@/stores";
-
-function getLink(name: string) {
-  const matches = socials
-    .get()
-    .filter((s) => s.name.toLowerCase() == name.toLowerCase());
-  return matches.length != 0 ? matches[0].link : "";
-}
+import { getLink, yournaux } from "@/stores";
 </script>
 
 <style scoped>
