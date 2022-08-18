@@ -20,13 +20,18 @@
         <img src="@/assets/images/photo.jpg" alt="" class="w-full" />
       </Card>
 
-      <Card title="Partenariat Xiaomi">
-        <img src="@/assets/images/xiaomi.png" alt="" />
+      <Card title="Week-end d'intégration">
         <p>
-          Nous avons fait équipe avec Xiaomi pour vous donner la chance de
-          remporter des lots à l'occasions de tirages aux sorts sur instagram.
-          Suivez-nous pour ne pas rater le suivant !
+          Prospère vous invite à sa fête dans sa nouvelle maison de vacances !
+          Vous n'allez quand même pas passer à côté !!??
+          <br class="mb-2" />
+          Le week-end d'intégration est l'événement à NE PAS RATER ! Venez à la
+          rencontre d'autres étudiants de l'école et profitez une dernière fois
+          de vos vacances !
         </p>
+        <div>
+          <Button goto="wei">En savoir plus</Button>
+        </div>
       </Card>
 
       <Card title="Le Yournal">
@@ -36,13 +41,18 @@
           que des prochains évènements organisés par le BDE.
         </p>
         <div>
-          <Button @click="goto('/yournal')">Voir les Yournaux</Button>
+          <Button goto="/yournal">Voir les Yournaux</Button>
         </div>
       </Card>
 
-      <!-- <Card title="Liens utiles">
-        <p></p>
-      </Card> -->
+      <Card title="Partenariat Xiaomi">
+        <img src="@/assets/images/xiaomi.png" alt="" />
+        <p>
+          Nous avons fait équipe avec Xiaomi pour vous donner la chance de
+          remporter des lots à l'occasions de tirages aux sorts sur instagram.
+          Suivez-nous pour ne pas rater le suivant !
+        </p>
+      </Card>
     </WallVue>
   </MainLayout>
 </template>
@@ -55,11 +65,6 @@ import Button from "@/components/button.vue";
 import { useRouter } from "vue-router";
 import { socials } from "@/stores";
 import WallVue from "@/components/wall.vue";
-
-const router = useRouter();
-function goto(route: string) {
-  router.push(route);
-}
 </script>
 
 <style scoped>
