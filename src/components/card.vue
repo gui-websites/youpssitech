@@ -12,14 +12,11 @@
 
 <script setup lang="ts">
 import { loadImage } from "@/api/tools";
-import { computed } from "vue";
 
-const props = withDefaults(
-  defineProps<{ title?: string; cover?: string; padding?: boolean }>(),
-  {
-    padding: true,
-  }
-);
+type Props = { title?: string; cover?: string; padding?: boolean };
+const props = withDefaults(defineProps<Props>(), {
+  padding: true,
+});
 </script>
 
 <style>

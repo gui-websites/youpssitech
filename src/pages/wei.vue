@@ -109,6 +109,9 @@ import Button from "@/components/button.vue";
 import Wall from "@/components/wall.vue";
 import Card from "@/components/card.vue";
 import Footer from "@/components/footer.vue";
+import useAnalytics from "@/api/analytics";
+
+useAnalytics();
 
 const img = (name: string) => loadImage(`@/assets/wei/promo/${name}.jpg`);
 

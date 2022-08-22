@@ -18,10 +18,9 @@
         <img src="@/assets/images/photo.jpg" alt="" class="w-full" />
       </Card>
 
-      <Card
-        title="Week-end d'intégration"
-        cover="../assets/wei/logo_wei_2022.png"
-      >
+      <Card>
+        <img src="@/assets/wei/logo_wei_2022.png" alt="" />
+        <h1>Week-end d'intégration</h1>
         <p>
           Prospère vous invite à sa fête dans sa nouvelle maison de vacances !
           Vous n'allez quand même pas passer à côté !!??
@@ -69,6 +68,8 @@ import { useRouter } from "vue-router";
 import { socials } from "@/stores";
 import WallVue from "@/components/wall.vue";
 import Social from "@/components/social.vue";
+
+import weiImg from "@/assets/wei/logo_wei_2022.png";
 </script>
 
 <style scoped>

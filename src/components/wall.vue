@@ -53,15 +53,15 @@ onBeforeUnmount(() => observer.disconnect());
 // End
 
 window.addEventListener("resize", () => {
-  console.log("ping");
+  // console.log("ping");
   createWall();
 });
 
 function createWall() {
-  console.log(content.value, list.value.length);
+  // console.log(content.value, list.value.length);
   if (!content.value || list.value.length == 0) return;
   const numCols = Math.ceil((content.value?.clientWidth ?? 0) / props.width);
-  console.log(numCols);
+  // console.log(numCols);
 
   content.value.innerHTML = "";
   content.value.style?.setProperty(

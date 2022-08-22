@@ -23,19 +23,21 @@ async function getPictures(): Promise<string[]> {
     .list("gallery/");
   if (!data) return [];
 
-  console.log(data);
+  // console.log(data);
 
   return data.map((x) => loadSupabaseFile("gallery/" + x.name));
 }
 
 async function getEvents(): Promise<Event[]> {
-  const { data } = await supabase.from<Event>("Events").select("*");
+  const { data } = await supabase.from<SupabaseEvent>("Events").select("*");
   if (!data) return [];
 
-  const events = data.map((x) => ({
-    ...x,
-    cover: loadSupabaseFile(x.cover),
-  }));
+  const events: Event[] = data
+    .sort((a, b) => b.id - a.id)
+    .map((x) => ({
+      ...x,
+      cover: loadSupabaseFile(x.cover),
+    }));
 
   return events;
 }
@@ -160,6 +162,8 @@ type Council = {
   year: number;
   logo: string;
 };
+
+type SupabaseEvent = Event & { id: number };
 
 type Event = {
   title: string;
