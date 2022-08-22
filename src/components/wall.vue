@@ -12,10 +12,10 @@
 import { ref, onBeforeUnmount, onMounted } from "vue";
 
 type Props = {
-  order?: "horizontal" | "vertical";
+  order?: "normal" | "reverse";
   width: number;
 };
-const props = withDefaults(defineProps<Props>(), { order: "horizontal" });
+const props = withDefaults(defineProps<Props>(), { order: "normal" });
 
 const buffer = ref<HTMLElement>();
 const content = ref<HTMLElement>();
@@ -68,6 +68,8 @@ function createWall() {
     "grid-template-columns",
     `repeat(${numCols}, minmax(0, 1fr))`
   );
+
+  // if (props.order == "reverse") list.value = list.value.reverse();
 
   for (let i = 0; i < numCols; i++) {
     const items =

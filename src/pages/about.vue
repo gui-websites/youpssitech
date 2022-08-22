@@ -14,10 +14,11 @@
       </p>
       <p>
         Vous pouvez nous contacter via
-        <a :href="getLink('instagram')" target="_blank">Instagram</a> ou par
-        mail (<a href="mailto:bde.youpssitech@gmail.com" target="_blank"
+        <a :href="getLink('instagram')" target="_blank">Instagram</a>,
+        <a :href="getLink('discord')" target="_blank">Discord</a>, ou par mail
+        (<a href="mailto:bde.youpssitech@gmail.com" target="_blank"
           >bde.youpssitech@gmail.com</a
-        >) Nous vous souhaitons une superbe année à l'UPSSITECH !
+        >). Nous vous souhaitons une superbe année à l'UPSSITECH !
       </p>
     </div>
 

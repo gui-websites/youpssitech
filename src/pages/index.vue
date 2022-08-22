@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <WallVue :width="500">
+    <WallVue :width="500" order="reverse">
       <Card title="Bienvenue au BDE Youpssitech">
         <p>
           Retrouvez y toutes les informations sur nos événements, ainsi que les
@@ -9,10 +9,8 @@
           N'hésite pas à nous suivre sur instagram pour avoir nos actualités en
           DIRECT.
         </p>
-        <div class="flex items-center gap-3">
-          <a v-for="s in socials.get()" :href="s.link" target="_blank">
-            <VueFeather :type="s.name.toLowerCase()" />
-          </a>
+        <div class="mt-3 flex items-center gap-6">
+          <Social v-for="s in socials.get()" :brand="s.name" :url="s.link" />
         </div>
       </Card>
 
@@ -20,7 +18,10 @@
         <img src="@/assets/images/photo.jpg" alt="" class="w-full" />
       </Card>
 
-      <Card title="Week-end d'intégration">
+      <Card
+        title="Week-end d'intégration"
+        cover="../assets/wei/logo_wei_2022.png"
+      >
         <p>
           Prospère vous invite à sa fête dans sa nouvelle maison de vacances !
           Vous n'allez quand même pas passer à côté !!??
@@ -34,25 +35,27 @@
         </div>
       </Card>
 
-      <Card title="Le Yournal">
-        <p>
-          Venez découvrir la ligne éditoriale de l'école rédigée par les
-          étudiants. Elle vous tiendra aux courant des actus dans le monde ainsi
-          que des prochains évènements organisés par le BDE.
-        </p>
-        <div>
-          <Button goto="/yournal">Voir les Yournaux</Button>
-        </div>
-      </Card>
+      <div class="flex flex-col gap-6">
+        <Card title="Partenariat Xiaomi">
+          <img src="@/assets/images/xiaomi.png" alt="" />
+          <p>
+            Nous avons fait équipe avec Xiaomi pour vous donner la chance de
+            remporter des lots à l'occasions de tirages aux sorts sur instagram.
+            Suivez-nous pour ne pas rater le suivant !
+          </p>
+        </Card>
 
-      <Card title="Partenariat Xiaomi">
-        <img src="@/assets/images/xiaomi.png" alt="" />
-        <p>
-          Nous avons fait équipe avec Xiaomi pour vous donner la chance de
-          remporter des lots à l'occasions de tirages aux sorts sur instagram.
-          Suivez-nous pour ne pas rater le suivant !
-        </p>
-      </Card>
+        <Card title="Le Yournal">
+          <p>
+            Venez découvrir la ligne éditoriale de l'école rédigée par les
+            étudiants. Elle vous tiendra aux courant des actus dans le monde
+            ainsi que des prochains évènements organisés par le BDE.
+          </p>
+          <div>
+            <Button goto="/yournal">Voir les Yournaux</Button>
+          </div>
+        </Card>
+      </div>
     </WallVue>
   </MainLayout>
 </template>
@@ -65,6 +68,7 @@ import Button from "@/components/button.vue";
 import { useRouter } from "vue-router";
 import { socials } from "@/stores";
 import WallVue from "@/components/wall.vue";
+import Social from "@/components/social.vue";
 </script>
 
 <style scoped>
