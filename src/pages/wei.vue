@@ -106,11 +106,9 @@ import Button from "@/components/button.vue";
 import Wall from "@/components/wall.vue";
 import Card from "@/components/card.vue";
 import Footer from "@/components/footer.vue";
-import useAnalytics from "@/api/analytics";
+import useAnalytics from "@/api/visits";
 
 useAnalytics();
-
-const img = (name: string) => loadImage(`@/assets/wei/promo/${name}.jpg`);
 
 import attParentale from "../assets/wei/documents/Autorisation_parentale.pdf";
 import exoneration from "../assets/wei/documents/Exoneration_de_responsabilitee.pdf";

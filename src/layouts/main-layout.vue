@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import HeaderVue from "@/components/header.vue";
 import FooterVue from "@/components/footer.vue";
-import useAnalytics from "@/api/analytics";
+import useAnalytics from "@/api/visits";
 
 useAnalytics();
 </script>
