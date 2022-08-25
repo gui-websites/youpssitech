@@ -64,36 +64,33 @@
           n'y a que <b>120 places</b> de disponible cette année.
         </p>
 
-        <div class="mt-3 grid w-full place-items-center lg:mt-6">
+        <div class="my-3 grid w-full place-items-center lg:my-6">
           <Button class="w-full lg:w-3/4" @click="sendToStore">
             Accéder à la billeterie
           </Button>
         </div>
+        <i class="justify text-sm">
+          Vous pouvez aussi payer en espèces au bureau en amenant les documents
+          nécessaires imprimés pour l'inscription (des exemplaires déjà imprimés
+          sont disponible au bureau)
+        </i>
       </div>
 
       <Card title="Informations importantes">
         <p>
           Voici les différents documents importants à lire avant le départ !
           Lors de l'achat de votre billet, vous devrez déposer l'exonération de
-          responsabilité complétée et signée + l'autorisation parentale (si vous
-          êtes mineur·e). La charte d'adhésion est un document général qui
-          couvre l'ensemble des événements réalisés par le BDE. Au moment du
-          paiement, il vous ai demandé d'en prendre connaissance. Ce sont des
-          règles de sécurité et elles s'appliqueront toutes à ce WEI.
+          responsabilité complétée et signée, la fiche de droit à l'image
+          signée, ainsi que l'autorisation parentale (si vous êtes mineur·e). La
+          charte d'adhésion est un document général qui couvre l'ensemble des
+          événements réalisés par le BDE. Au moment du paiement, il vous est
+          demandé d'en prendre connaissance. Ce sont des règles de sécurité et
+          elles s'appliqueront toutes lors de ce WEI.
         </p>
 
         <ul class="list-disc pl-4">
-          <li>
-            <a download :href="exoneration">
-              Fiche d'exonération de responsabilité
-            </a>
-          </li>
-          <li>
-            <a download :href="charte">Charte d'adhésion à l'évènement</a>
-          </li>
-          <li>
-            <a download :href="attParentale">Autorisation parentale</a>
-            (Si mineur·e)
+          <li v-for="[name, link] in Object.entries(files)">
+            <a download :href="link">{{ name }}</a>
           </li>
         </ul>
       </Card>
@@ -118,10 +115,18 @@ const img = (name: string) => loadImage(`@/assets/wei/promo/${name}.jpg`);
 import attParentale from "../assets/wei/documents/Autorisation_parentale.pdf";
 import exoneration from "../assets/wei/documents/Exoneration_de_responsabilitee.pdf";
 import charte from "../assets/wei/documents/Charte_Adhesion_Evenement_BDE.pdf";
+import droitImage from "../assets/wei/documents/Autorisation_Image.pdf";
+
+const files = {
+  "Fiche d'exonération de responsabilité": exoneration,
+  "Charte d'adhésion à l'évènement": charte,
+  "Fiche droit à l'image": droitImage,
+  "Autorisation parentale": attParentale,
+};
 
 const sendToStore = () => {
   window.location.href =
-    "https://www.helloasso.com/associations/bde-youpssitech/evenements/inscription-wei-2022-upssitech-1?_gl=1%2a3ma9ps%2a_ga%2aNDAyMTA3NDYxLjE2NTg1NzYzMDg.%2a_ga_TKC826G3G2%2aMTY2MDkyOTc5NC4xNS4wLjE2NjA5Mjk3OTQuMC4wLjA.&_ga=2.265616267.581363466.1660929795-402107461.1658576308";
+    "https://www.helloasso.com/associations/bde-youpssitech/evenements/inscription-wei-2022-upssitech-1";
 };
 </script>
 

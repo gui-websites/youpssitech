@@ -169,4 +169,5 @@ type Event = {
   title: string;
   cover: string;
   description: string;
+  has_passed: boolean;
 };
