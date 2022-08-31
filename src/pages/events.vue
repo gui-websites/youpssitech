@@ -4,6 +4,9 @@
     <Wall :width="500" class="w-full">
       <Card v-for="e in next_events" :cover="e.cover" :title="e.title">
         <p>{{ e.description }}</p>
+        <div v-if="e.cta">
+          <Button :href="e.cta">En savoir plus</Button>
+        </div>
       </Card>
     </Wall>
 
@@ -20,6 +23,7 @@
 import MainLayout from "@/layouts/main-layout.vue";
 import Card from "@/components/card.vue";
 import Wall from "@/components/wall.vue";
+import Button from "@/components/button.vue";
 
 import { computed } from "vue";
 import { events } from "@/stores";

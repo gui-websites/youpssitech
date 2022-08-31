@@ -34,27 +34,60 @@
         </div>
       </Card>
 
-      <div class="flex flex-col gap-6">
-        <Card title="Partenariat Xiaomi">
-          <img src="@/assets/images/xiaomi.png" alt="" />
-          <p>
-            Nous avons fait équipe avec Xiaomi pour vous donner la chance de
-            remporter des lots à l'occasions de tirages aux sorts sur instagram.
-            Suivez-nous pour ne pas rater le suivant !
-          </p>
-        </Card>
+      <Card>
+        <img src="@/assets/images/mojjo-logo.png" alt="" />
+        <h1>Partenariat x Mojjo</h1>
+        <p>
+          Le BDE Youpssitech vous propose la carte mojjo toulousaine !
+          Réductions illimitées toute l'année pour les étudiants ! 80€ de
+          cadeaux offerts dans les bars et restaurants partenaires tels que
+          Mcdo, Pizza hut, Burger king, Café Populaire, The Danu et plein
+          d'autres (<a
+            href="https://www.carte-mojjo.fr/toulouse/offres/"
+            class="text-primary hover:underline"
+            >Voir la liste complète des avantages</a
+          >).
+        </p>
+        <p>
+          L'achat d'une carte mojjo permet également de soutenir ton BDE et de
+          l'aider à financer de plus gros événements ! Viens récupérer ta carte
+          au bureau pour 15€ (commande hello asso ou paiement en espèce)
+        </p>
+        <div class="flex items-center gap-3">
+          <Button
+            href="https://www.helloasso.com/associations/bde-youpssitech/boutiques/carte-mojjo"
+            >Commander la carte</Button
+          >
+        </div>
+      </Card>
 
-        <Card title="Le Yournal">
-          <p>
-            Venez découvrir la ligne éditoriale de l'école rédigée par les
-            étudiants. Elle vous tiendra aux courant des actus dans le monde
-            ainsi que des prochains évènements organisés par le BDE.
-          </p>
-          <div>
-            <Button goto="/yournal">Voir les Yournaux</Button>
-          </div>
-        </Card>
-      </div>
+      <Card title="Ils nous font confiance !">
+        <p>
+          Voici nos partenaires pour l'année 2022-2023, hésitez pas à checker
+          leurs sites !
+        </p>
+
+        <div class="grid grid-cols-4 gap-3">
+          <a
+            v-for="[name, cta] in Object.entries(partners)"
+            class="grid aspect-square place-items-center border-2 border-black"
+            :href="cta"
+          >
+            <img :src="img(name)" alt="" class="w-full" />
+          </a>
+        </div>
+      </Card>
+
+      <Card title="Le Yournal">
+        <p>
+          Venez découvrir la ligne éditoriale de l'école rédigée par les
+          étudiants. Elle vous tiendra aux courant des actus dans le monde ainsi
+          que des prochains évènements organisés par le BDE.
+        </p>
+        <div>
+          <Button goto="/yournal">Voir les Yournaux</Button>
+        </div>
+      </Card>
     </WallVue>
   </MainLayout>
 </template>
@@ -64,12 +97,19 @@ import MainLayout from "@/layouts/main-layout.vue";
 import Card from "@/components/card.vue";
 import Button from "@/components/button.vue";
 
-import { useRouter } from "vue-router";
 import { socials } from "@/stores";
 import WallVue from "@/components/wall.vue";
 import Social from "@/components/social.vue";
+import { loadImage } from "@/api/tools";
 
-import weiImg from "@/assets/wei/logo_wei_2022.png";
+const partners = {
+  "baless.jpg": "https://www.baless.fr/",
+  "eclipse.png": "https://linktr.ee/eclipsetoulouse",
+  "mojjo.jpg": "https://www.carte-mojjo.fr/toulouse/",
+  "paranormal.jpg": "https://paranormalfestival.fr/toulouse/",
+};
+
+const img = (name: string) => loadImage(`../assets/images/partners/${name}`);
 </script>
 
 <style scoped>

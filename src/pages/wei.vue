@@ -16,7 +16,13 @@
         <div
           class="grid aspect-video w-full max-w-lg place-items-center bg-neutral-500"
         >
-          <VueFeather type="play" class="w-16 text-white" />
+          <!-- <VueFeather type="play" class="w-16 text-white" /> -->
+          <video
+            src="@/assets/wei/wei.mp4"
+            poster="@/assets/wei/first-frame.png"
+            class="w-full"
+            controls
+          ></video>
         </div>
       </div>
     </header>
@@ -64,19 +70,28 @@
           n'y a que <b>120 places</b> de disponible cette année.
         </p>
 
+        <h1 class="my-3 text-xl font-bold">Réservez votre billet</h1>
+
+        <p class="mb-3">
+          Vous pouvez réserver votre billet en passant par la billeterie mais
+          aussi en payer en espèces au bureau en amenant les documents
+          nécessaires imprimés pour l'inscription (des exemplaires déjà imprimés
+          sont disponible au bureau)
+        </p>
+
+        <p class="border-2 border-red-500 p-3 font-bold text-red-500">
+          Vous devez OBLIGATOIREMENT déposer au bureau une caution de 100€ avant
+          le 20 septembre. (pas de caution = pas de départ).
+        </p>
+
         <div class="my-3 grid w-full place-items-center lg:my-6">
           <Button class="w-full lg:w-3/4" @click="sendToStore">
             Accéder à la billeterie
           </Button>
         </div>
-        <i class="justify text-sm">
-          Vous pouvez aussi payer en espèces au bureau en amenant les documents
-          nécessaires imprimés pour l'inscription (des exemplaires déjà imprimés
-          sont disponible au bureau)
-        </i>
       </div>
 
-      <Card title="Informations importantes">
+      <Card title="Documents importants">
         <p>
           Voici les différents documents importants à lire avant le départ !
           Lors de l'achat de votre billet, vous devrez déposer l'exonération de

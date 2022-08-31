@@ -16,12 +16,21 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 
-const props = defineProps<{ goto?: string }>();
+type Props = {
+  goto?: string;
+  href?: string;
+  hollow?: boolean;
+};
+const props = withDefaults(defineProps<Props>(), {
+  hollow: false,
+});
+
 const emit = defineEmits(["click"]);
 const router = useRouter();
 
 function onClick() {
   if (props.goto) router.push(props.goto);
+  else if (props.href) window.location.href = props.href;
   else emit("click", null);
 }
 </script>

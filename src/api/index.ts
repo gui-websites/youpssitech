@@ -170,4 +170,5 @@ type Event = {
   cover: string;
   description: string;
   has_passed: boolean;
+  cta: string | null;
 };

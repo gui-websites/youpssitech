@@ -4,7 +4,6 @@ import { useRoute } from "vue-router";
 export default useAnalytics;
 
 async function useAnalytics() {
-  console.log("Hi");
   if (window.location.hostname == "localhost") return;
 
   const date = getDate();
