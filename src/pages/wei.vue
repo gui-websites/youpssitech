@@ -123,12 +123,12 @@ import Card from "@/components/card.vue";
 import Footer from "@/components/footer.vue";
 import useAnalytics from "@/api/visits";
 
-useAnalytics();
-
 import attParentale from "../assets/wei/documents/Autorisation_parentale.pdf";
 import exoneration from "../assets/wei/documents/Exoneration_de_responsabilitee.pdf";
 import charte from "../assets/wei/documents/Charte_Adhesion_Evenement_BDE.pdf";
 import droitImage from "../assets/wei/documents/Autorisation_Image.pdf";
+
+useAnalytics();
 
 const files = {
   "Fiche d'exonération de responsabilité": exoneration,

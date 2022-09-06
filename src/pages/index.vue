@@ -73,7 +73,7 @@
             class="grid aspect-square place-items-center border-2 border-black"
             :href="cta"
           >
-            <img :src="img(name)" alt="" class="w-full" />
+            <img :src="load(name)" alt="" class="w-full" />
           </a>
         </div>
       </Card>
@@ -93,6 +93,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 import MainLayout from "@/layouts/main-layout.vue";
 import Card from "@/components/card.vue";
 import Button from "@/components/button.vue";
@@ -109,7 +111,8 @@ const partners = {
   "paranormal.jpg": "https://paranormalfestival.fr/toulouse/",
 };
 
-const img = (name: string) => loadImage(`../assets/images/partners/${name}`);
+const load = (name: string) =>
+  new URL(`../assets/images/partners/${name}`, import.meta.url).toString();
 </script>
 
 <style scoped>

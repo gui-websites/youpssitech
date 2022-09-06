@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && scp -r dist/ {{TODO: Add destination}}"
+    "deploy": "scp -r dist/ vps:/var/www/youpssitech"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.3",
