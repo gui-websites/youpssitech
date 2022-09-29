@@ -1,7 +1,7 @@
 <template>
   <button
     @click="onClick"
-    class="button cursor-pointer border border-white bg-black px-6 py-4 font-bold text-white hover:ring-2 hover:ring-black"
+    class="button grid cursor-pointer place-items-center border border-white bg-black px-6 py-4 font-bold text-white hover:ring-2 hover:ring-black"
   >
     <slot />
   </button>

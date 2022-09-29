@@ -1,4 +1,3 @@
 {
-  "supabase_url": "https://hqkrydlzswfvxpuwdduj.supabase.co",
-  "supabase_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhxa3J5ZGx6c3dmdnhwdXdkZHVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTE0MjY2OTAsImV4cCI6MTk2NzAwMjY5MH0.p2hxSJ5aiz39a_s9cRrRfhiO17WvO6QIpi3r34v5ooQ"
+  "api_url": "https://api.youpssitech.fr"
 }

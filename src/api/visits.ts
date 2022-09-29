@@ -1,35 +1,56 @@
-import supabase from "./supabase";
+import pocketbase from "./pocketbase";
 import { useRoute } from "vue-router";
 
 export default useAnalytics;
+export { Analytics, getAnalytics };
 
 async function useAnalytics() {
-  if (window.location.hostname == "localhost") return;
+  // if (window.location.hostname == "localhost") return;
 
-  const date = getDate();
+  const date = new Date();
   const page = useRoute().fullPath;
 
-  const table = supabase.from<Analytics>("Analytics");
+  try {
+    let rows = await pocketbase.records.getFullList("analytics", 10, {
+      filters: `date = ${date} && page = ${page}`,
+    });
 
-  const { data } = await table.select("*").eq("date", date).eq("page", page);
-  if (!data) return;
+    if (rows.length == 0) {
+      await pocketbase.records.create("analytics", {
+        date: date,
+        page: page,
+        visits: 1,
+      });
+    } else {
+      const record = rows[0];
+      record.visits += 1;
 
-  if (data.length == 0) {
-    await table.insert({ date, page });
-  } else {
-    await table
-      .update({ visits: data[0].visits + 1 })
-      .eq("date", date)
-      .eq("page", page);
+      await pocketbase.records.update("analytics", record.id, record);
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
-function getDate() {
-  const time = new Date();
-  return (
-    time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate()
-  );
+async function getAnalytics(): Promise<Analytics[]> {
+  try {
+    //
+    const list = await pocketbase.records.getFullList("analytics");
+
+    const analytics: Analytics[] = list.map((record) => ({
+      date: record.date,
+      page: record.page,
+      visits: record.visits,
+    }));
+
+    return analytics;
+    //
+  } catch (e) {
+    return [];
+  }
 }
+
+// === TYPES ====
 
 type Analytics = {
   date: string;

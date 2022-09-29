@@ -2,7 +2,7 @@ import { CustomMap } from "@/api/tools";
 import {
   getSocials,
   getYournaux,
-  getList,
+  getMemberList,
   getCouncils,
   getEvents,
   getPictures,
@@ -11,7 +11,7 @@ import persisted from "./persisted-data";
 
 const socials = persisted(getSocials, []);
 const yournaux = persisted(getYournaux, []);
-const list = persisted(getList, []);
+const list = persisted(getMemberList, []);
 const councils = persisted(getCouncils, []);
 const events = persisted(getEvents, []);
 const pictures = persisted(getPictures, []);

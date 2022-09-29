@@ -1,0 +1,12 @@
+@layer utilities {
+  input[type="text"],
+  input[type="password"],
+  .input {
+    @apply rounded-lg border-2 border-black p-3 focus:border-neutral-700 focus:ring-0;
+  }
+
+  input[type="submit"],
+  .submit {
+    @apply grid place-items-center rounded-lg bg-black p-3 font-bold text-white hover:bg-neutral-700;
+  }
+}
