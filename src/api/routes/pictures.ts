@@ -17,7 +17,7 @@ async function getPictures(): Promise<string[]> {
     //   tags: record.tags.split(","),
     // }));
 
-    const pictures: string[] = list.map((record) =>
+    const pictures: string[] = list.map((record: any) =>
       pocketbase.records.getFileUrl(record, record.image)
     );
 

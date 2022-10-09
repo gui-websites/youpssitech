@@ -9,14 +9,11 @@
     "deploy": "scp -r dist/ vps:/var/www/youpssitech/frontend"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.35.3",
     "dayjs": "^1.11.5",
     "echarts": "^5.3.3",
     "feather-icons": "^4.28.0",
-    "masonry-layout": "^4.2.2",
     "pinia": "^2.0.11",
     "pocketbase": "^0.7.1",
-    "simple-icons": "^7.8.0",
     "url": "^0.11.0",
     "vue": "^3.2.25",
     "vue-feather": "^2.0.0",
@@ -24,7 +21,6 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.0",
-    "@types/masonry-layout": "^4.2.4",
     "@types/node": "^17.0.21",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-vue": "^2.2.0",

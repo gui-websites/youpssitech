@@ -1,9 +1,8 @@
 import pocketbase from "@/api/pocketbase";
-import supabase from "@/api/supabase";
 
 // === EXPORTS ===
 
-export { getMemberList, Member };
+export { getMemberList, Member, Dept };
 
 // === METHODS ===
 
@@ -15,14 +14,14 @@ async function getMemberList(): Promise<Dept[]> {
 
     const getDeptMembers = (id: string): Member[] =>
       memberList
-        .filter((record) => record.dept == id)
-        .map((record) => ({
+        .filter((record: any) => record.dept == id)
+        .map((record: any) => ({
           name: record.name,
           avatar: pocketbase.records.getFileUrl(record, record.avatar),
           leader: record.leader,
         }));
 
-    const list: Dept[] = deptList.map((record) => ({
+    const list: Dept[] = deptList.map((record: any) => ({
       name: record.name,
       desc: record.desc,
       members: getDeptMembers(record.id),

@@ -4,4 +4,4 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module "@yeger/vue-masonry-wall";
+declare module "pocketbase";

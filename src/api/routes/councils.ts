@@ -10,7 +10,7 @@ async function getCouncils(): Promise<Council[]> {
   try {
     //
     const list = await pocketbase.records.getFullList("councils");
-    const councils: Council[] = list.map((record) => ({
+    const councils: Council[] = list.map((record: any) => ({
       name: record.name,
       year: record.year,
       logo: pocketbase.records.getFileUrl(record, record.logo),

@@ -10,7 +10,7 @@ async function getYournaux(): Promise<Yournal[]> {
   try {
     //
     const list = await pocketbase.records.getFullList("yournaux");
-    const yournaux: Yournal[] = list.map((record) => ({
+    const yournaux: Yournal[] = list.map((record: any) => ({
       name: record.name,
       cover: pocketbase.records.getFileUrl(record, record.cover),
       download: pocketbase.records.getFileUrl(record, record.download),

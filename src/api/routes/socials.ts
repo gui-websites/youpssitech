@@ -1,5 +1,4 @@
 import pocketbase from "@/api/pocketbase";
-import supabase from "@/api/supabase";
 
 // === EXPORTS ===
 
@@ -11,7 +10,7 @@ async function getSocials(): Promise<Social[]> {
   try {
     //
     const list = await pocketbase.records.getFullList("socials");
-    const socials: Social[] = list.map((record) => ({
+    const socials: Social[] = list.map((record: any) => ({
       name: record.name,
       link: record.link,
     }));

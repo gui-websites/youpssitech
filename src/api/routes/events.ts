@@ -10,7 +10,7 @@ async function getEvents(): Promise<Event[]> {
   try {
     //
     const list = await pocketbase.records.getFullList("events");
-    const events: Event[] = list.map((record) => ({
+    const events: Event[] = list.map((record: any) => ({
       title: record.title,
       cover: pocketbase.records.getFileUrl(record, record.cover),
       description: record.description,

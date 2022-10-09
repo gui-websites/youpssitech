@@ -1,4 +1,3 @@
-import { CustomMap } from "@/api/tools";
 import {
   getSocials,
   getYournaux,

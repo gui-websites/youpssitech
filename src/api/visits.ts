@@ -5,7 +5,7 @@ export default useAnalytics;
 export { Analytics, getAnalytics };
 
 async function useAnalytics() {
-  // if (window.location.hostname == "localhost") return;
+  if (window.location.hostname == "localhost") return;
 
   const date = new Date();
   const page = useRoute().fullPath;
@@ -37,7 +37,7 @@ async function getAnalytics(): Promise<Analytics[]> {
     //
     const list = await pocketbase.records.getFullList("analytics");
 
-    const analytics: Analytics[] = list.map((record) => ({
+    const analytics: Analytics[] = list.map((record: any) => ({
       date: record.date,
       page: record.page,
       visits: record.visits,
