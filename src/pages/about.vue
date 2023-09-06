@@ -1,10 +1,10 @@
 <template>
   <MainLayout>
-    <h1 class="mb-3 text-lg font-bold">Liste Upssitopia</h1>
+    <h1 class="mb-3 text-lg font-bold">Liste Kyupssi</h1>
 
     <div class="mb-6 text-justify">
       <p class="mb-2">
-        Nous sommes la liste UPSSITOPIA représentant le BDE Youpssitech de
+        Nous sommes la liste KYUPSSI représentant le BDE Youpssitech de
         <a href="https://www.upssitech.eu/" target="_blank">l'UPSSITECH</a> sur
         l'année 2022-2023 ! Notre objectif premier est d'amener une cohésion
         entre tous les élèves de l'école quelque soit leur filière. Pour ce

@@ -6,7 +6,11 @@
           Retrouvez y toutes les informations sur nos événements, ainsi que les photos,
           les yournaux et pleins d'autres infos super cool sur l'école !
           <br class="mb-2" />
-          N'hésite pas à nous suivre sur instagram pour avoir nos actualités en DIRECT.
+          N'hésite pas à nous suivre sur <a
+            href="https://www.instagram.com/bde_youpssitech/"
+            class="text-primary hover:underline"
+            >Instagram</a
+          > pour avoir nos actualités en DIRECT.
         </p>
         <div class="mt-3 flex items-center gap-6">
           <Social v-for="s in socials.get()" :brand="s.name" :url="s.link" />
@@ -18,20 +22,30 @@
       </Card>
 
       <Card>
-        <img src="@/assets/wei/logo_wei_2022.png" alt="" />
+        <img src="@/assets/wei/logo_wei_2023.png" alt="" />
         <h1>Week-end d'intégration</h1>
         <p>
-          Prospère vous invite à sa fête dans sa nouvelle maison de vacances ! Vous
-          n'allez quand même pas passer à côté !!??
+          En restant sur un air de vacances, Prosper vous invite à son week-end d’intégration annuel.
           <br class="mb-2" />
-          Le week-end d'intégration est l'événement à NE PAS RATER ! Venez à la rencontre
-          d'autres étudiants de l'école et profitez une dernière fois de vos vacances !
+          Rendez-vous du 22 au 24 septembre pour célébrer la rentrée, les rencontres et les retrouvailles tous ensemble comme il se doit !
         </p>
         <div>
           <Button goto="wei">En savoir plus</Button>
         </div>
       </Card>
 
+      <Card title="Le Yournal">
+        <p>
+          Venez découvrir la ligne éditoriale de l'école rédigée par les étudiants. Elle
+          vous tiendra aux courant des actus dans le monde ainsi que des prochains
+          évènements organisés par le BDE.
+        </p>
+        <div>
+          <Button goto="/yournal">Voir les Yournaux</Button>
+        </div>
+      </Card>
+      
+      <!--
       <Card>
         <img src="@/assets/images/mojjo-logo.png" alt="" />
         <h1>Partenariat x Mojjo</h1>
@@ -57,6 +71,7 @@
           >
         </div>
       </Card>
+      -->
 
       <Card title="Ils nous font confiance !">
         <p>
@@ -75,16 +90,7 @@
         </div>
       </Card>
 
-      <Card title="Le Yournal">
-        <p>
-          Venez découvrir la ligne éditoriale de l'école rédigée par les étudiants. Elle
-          vous tiendra aux courant des actus dans le monde ainsi que des prochains
-          évènements organisés par le BDE.
-        </p>
-        <div>
-          <Button goto="/yournal">Voir les Yournaux</Button>
-        </div>
-      </Card>
+      
     </WallVue>
   </MainLayout>
 </template>
