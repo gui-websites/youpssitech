@@ -15,10 +15,11 @@ npm run docker:build
 npm run docker:push
 ```
 
-- Etape 4: Sur la VM (obtenir les accès) aller au dossier `/srv/www/youpssitech/` et effectuer :
+- Etape 4: Sur la VM (obtenir les accès) aller au dossier `/srv/www/youpssitech.fr/` et effectuer :
 
 ```bash
 docker-compose down
+docker pull guiupssitech/youpssitech
 docker-compose up -d
 ```
 
