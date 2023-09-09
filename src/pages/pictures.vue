@@ -14,6 +14,5 @@
 <script setup lang="ts">
 import MainLayout from "@/layouts/main-layout.vue";
 import Wall from "@/components/wall.vue";
-
 import { pictures } from "@/stores";
 </script>

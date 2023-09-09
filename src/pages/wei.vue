@@ -29,9 +29,10 @@
 
     <div class="section two-piece">
       <p class="paragraph">
-        Bienvenue aux nouveaux et bon retour aux anciens !
-        En restant sur un air de vacances, Prosper vous invite à son week-end d’intégration annuel.
-        Rendez-vous du 22 au 24 septembre pour célébrer la rentrée, les rencontres et les retrouvailles tous ensemble comme il se doit !
+        Bienvenue aux nouveaux et bon retour aux anciens ! En restant sur un air
+        de vacances, Prosper vous invite à son week-end d'intégration annuel.
+        Rendez-vous du 22 au 24 septembre pour célébrer la rentrée, les
+        rencontres et les retrouvailles tous ensemble comme il se doit !
       </p>
       <img src="../assets/wei/promo/group.jpg" alt="" />
     </div>
@@ -39,10 +40,10 @@
     <div class="bg-neutral-100">
       <div class="section flex flex-col gap-6">
         <p class="paragraph">
-          Prosper vous a bichonné cette année. Au programme : trampoline aquatique, canoés, paddles, ventriglisse et j'en passe.
-          Faites la fête le vendredi et samedi soir jusqu'au petit matin ! Et
-          savourez le délicieux repas que notre renard vous aura concocté le
-          lendemain midi.
+          Prosper vous a bichonné cette année. Au programme : trampoline
+          aquatique, canoés, paddles, ventriglisse et j'en passe. Faites la fête
+          le vendredi et samedi soir jusqu'au petit matin ! Et savourez le
+          délicieux repas que notre renard vous aura concocté le lendemain midi.
         </p>
 
         <Wall :width="300" class="mx-auto w-full max-w-3xl">
@@ -57,7 +58,8 @@
       <div>
         <p class="paragraph">
           Toute l'équipe du BDE vous attend avec impatience ! C'est l'occasion
-          parfaite de s'intégrer à l'école et à sa promotion. Faites Vite ! <b>Le nombre de place est limité</b> cette année !
+          parfaite de s'intégrer à l'école et à sa promotion. Faites Vite !
+          <b>Le nombre de place est limité</b> cette année !
         </p>
 
         <h1 class="my-3 text-xl font-bold">Réservez votre billet</h1>
@@ -85,11 +87,11 @@
           Voici les différents documents importants à lire avant le départ !
           Lors de l'achat de votre billet, vous devrez déposer l'exonération de
           responsabilité complétée et signée, la fiche de droit à l'image
-          signée, l'attestation de natation, ainsi que l'autorisation parentale (si vous êtes mineur·e). La
-          charte d'adhésion est un document général qui couvre l'ensemble des
-          événements réalisés par le BDE. Au moment du paiement, il vous est
-          demandé d'en prendre connaissance. Ce sont des règles de sécurité et
-          elles s'appliqueront toutes lors de ce WEI.
+          signée, l'attestation de natation, ainsi que l'autorisation parentale
+          (si vous êtes mineur·e). La charte d'adhésion est un document général
+          qui couvre l'ensemble des événements réalisés par le BDE. Au moment du
+          paiement, il vous est demandé d'en prendre connaissance. Ce sont des
+          règles de sécurité et elles s'appliqueront toutes lors de ce WEI.
         </p>
 
         <ul class="list-disc pl-4">
@@ -125,7 +127,7 @@ const files = {
   "Charte d'adhésion à l'évènement": charte,
   "Fiche droit à l'image": droitImage,
   "Autorisation parentale": attParentale,
-  "Autorisation parentale": attNatation,
+  "Attestation de natation": attNatation,
 };
 
 const sendToStore = () => {

@@ -6,12 +6,14 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "deploy": "scp -r dist/ vps:/var/www/youpssitech/frontend"
+    "docker:build": "docker build -t guiupssitech/youpssitech:latest .",
+    "docker:push": "docker push guiupssitech/youpssitech:latest"
   },
   "dependencies": {
     "dayjs": "^1.11.5",
     "echarts": "^5.3.3",
     "feather-icons": "^4.28.0",
+    "googleapis": "^109.0.1",
     "pinia": "^2.0.11",
     "pocketbase": "^0.7.1",
     "url": "^0.11.0",
